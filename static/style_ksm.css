@@ -19,6 +19,13 @@ ul {
   padding: 0 30px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .row {
   margin-bottom: 30px;
 }
