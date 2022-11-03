@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='style_1.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='member_dark.css') }}" />
+
 
     <title>박진산</title>
 
@@ -88,7 +90,7 @@
         <div class="row profile_wrapper">
           <div class="col">
             <div class="profile">
-              <img src="static/profile-pjs.jpg" alt="" />
+              <img src="/static/profile-pjs.jpg" alt="" />
             </div>
           </div>
           <div class="col">
@@ -112,7 +114,10 @@
 
         <div class="my_style">
           <h1 style="font-weight: bold">My Style</h1>
-          <h4>추가로 입력할게요!</h4>
+          <h4>협업에서 팀원 간 관계가 정말 중요하다고 생각해요!<br>
+                    저는 프로젝트에서 관계 조율을 잘 하는 편이에요<br>
+                    그리고 가끔 좋은 아이디어도 제공합니다 :)<br>
+          </h4>
         </div>
 
         <div class="icon">
@@ -186,5 +191,6 @@
         {% include 'fixedIcons.html' %}
       </div>
     </div>
+  <script src="/static/icons.js"></script>
   </body>
 </html>

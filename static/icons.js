@@ -13,5 +13,12 @@ $(document).ready(function (){
         $('.goal').toggleClass('dark');
         $('.rule').toggleClass('dark');
         $('.introduce').toggleClass('dark');
+        $('.desc').toggleClass('dark');
+        $('.about').toggleClass('dark');
+        $('.my_style').toggleClass('dark');
+        $('.hi').toggleClass('dark');
+        $('.board').toggleClass('dark');
+        $('.nav_wrapper').toggleClass('dark');
+
     })
 });
