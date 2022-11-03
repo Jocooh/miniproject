@@ -1,130 +1,151 @@
 @charset "utf-8";
-@font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
+
+*{padding: 0;margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;}
+
+html,body{font-size: 12px;}
+h2{
+  font-size: 32px;
+  color: #111;
+  font-weight: 500;
 }
 
-html, body {
-    font-family: 'Noto Sans KR', sans-serif;
+p, ul{
+  color: #333;
 }
 
-.boxalign {
-    max-width: 1000px;
-    width: 95%;
-    margin: auto;
-}
-/*타이틀 부분*/
-header {
-    overflow: hidden;
-    margin: 10px auto;
+.container{
+  margin: 100px auto;
+  max-width: 800px;
+  padding: 0 30px;
 }
 
-
-.profile {
-    width: 300px;
-    height: 300px;
-    background-image: url(myprofile.jpg);
-    background-size: contain;
-    background-position: center;
-    border-radius: 50%;
-    float: left;
+.row{
+  margin-bottom: 30px;
 }
 
-
-
-
-.desc {
-    float: right;
-    margin-top: 100px;
-    color: #aaa9a9;
-}
-.desc:hover{
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/*설명 부분*/
 .about {
-    margin: 10px auto 10px auto;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 3px solid rgb(26, 94, 203);
+  width: 700x;
+  height: 200px;
+
+  margin: 30px auto 0 auto;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: center;*/
+  /*text-align: center;*/
+
 }
 
-.about:hover {
-    background-color: rgb(4, 82, 207);
-    color: white;
-    transition-duration: 1s;
+.about>h1{
+    margin-bottom: 20px;
 }
 
 .my_style {
-    border: 3px solid rgb(26, 94, 203);
-    border-radius: 10px;
-    padding: 5px 10px;
+    width: 900px;
+    height: 200px;
+
+    /*margin: 0 auto 30px auto;*/
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+    /*text-align: center;*/
+    font-weight: bold;
 }
-.my_style:hover{
-    background-color: rgb(4, 82, 207);
-    color: white;
-    transition-duration: 1s;
+
+.my_style>h1{
+    margin-bottom: 20px;
 }
 
 .icon {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin: 10px auto 60px auto;
 }
 
-.icon > .github {
-    margin-right: 20px;
+.ic_github {
+  background-image: url("/static/3.png");
+  background-size: cover;
+  background-position: center;
+
+  width: 60px;
+  height: 60px;
+
+  background-color: transparent;
+  border: 1px solid transparent;
 }
 
-section>span{
-    display:block;
-    width:50px;
-    border-bottom: 5px solid rgb(26, 94, 203);
-    margin:30px auto;
+.ic_blog {
+  background-image: url("/static/2.png");
+  background-size: cover;
+  background-position: center;
+
+  width: 60px;
+  height: 60px;
+
+  background-color: transparent;
+  border: 1px solid transparent;
+
+
 }
-/*방명록 시작*/
-section > h3{
-    text-align: center;
-    margin-top: 20px;
+
+ .icon > a {
+            margin-right: 15px;
+        }
+
+        .icon > a:hover {
+
+            transform: scale(1.4);
+            transition: transform .3s;
+
+        }
+
+
+.hi {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hi:hover:before {
+  content: "🙋‍♂️🙋‍♀";
+}
+
+.board-comment {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .board {
-    max-width: 700px;
-    width: 95%;
-    margin: 20px auto 20px auto;
-    box-shadow: 0 0 3px 0 rgb(26, 94, 203);
-    padding: 20px;
-    border-radius: 20px;
+  max-width: 800px;
+  width: 95%;
+
+  margin: 30px auto 50px auto;
+
+  padding: 20px;
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 10px;
 }
 
-.btn {
-    margin: 10px auto;
-}
-/*댓글 시작*/
-.review {
-    max-width: 650px;
-    width: 95%;
-    margin: 10px auto 10px auto;
-    border-radius: 20px;
+.board-comment {
+  max-width: 800px;
+  width: 95%;
+  height: 10%;
+  margin: 20px auto 0 auto;
 }
 
-.card {
-    margin-bottom: 10px;
-    border: 2px solid rgb(26, 94, 203);
+#guestbook{
+    margin-bottom: 20px;
 }
-
-.card-header{
-    background-color: rgb(26, 94, 203);
-    color: white;
-}
-
 
 .nav{
   justify-content: center;
