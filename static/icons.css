@@ -1,0 +1,48 @@
+.icons {
+    position: fixed;
+    right: 30px;
+    display: block;
+    cursor: pointer;
+}
+
+.logo{
+    left: 40px;
+    top: 30px;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.logo:hover{
+    color: #101010;
+}
+
+.darkmode {
+    top: 30px;
+}
+
+.top {
+    bottom: 30px;
+}
+
+/* ------- 다크모드 --------- */
+body.dark {
+    background-color: #0f0f0f;
+}
+
+.icons.logo.dark{
+    color: #f2f2f2;
+}
+
+.icons.dark:hover{
+    color: #00F300;
+}
+
+.icons.dark > svg{
+    fill: #fff;
+}
+
+.icons.dark:hover > svg{
+    fill: #00F300;
+}

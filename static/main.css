@@ -1,0 +1,166 @@
+body{
+  overflow-x: hidden;
+    background-color: #fff;
+}
+
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+section {
+    margin-bottom: 40vh;
+}
+
+section:last-child{
+  margin-bottom: 5vh;
+}
+
+section > * {
+    text-align: center;
+}
+
+section > h1 {
+    font-weight: 700;
+    font-size: 3.2vw;
+    margin-bottom: 5rem;
+}
+
+section > h1, .msg {
+    color: #111;
+    letter-spacing: -0.016em;
+}
+
+
+
+.intro {
+    padding-bottom: 20vh;
+}
+
+.msg {
+    font-size: 8vw;
+    font-weight: 900;
+    padding-top: 36vh;
+}
+
+.msg:not(:first-child) {
+    transition: transfrom .7s ease-in-out, opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.msg.on {
+    animation: fadeInOut ease-in-out 1s;
+    animation-fill-mode: forwards;
+}
+
+.msg > .slim {
+    font-weight: 500;
+}
+
+.goal .point {
+    font-size: 5vw;
+    font-weight: 900;
+    animation: moving1 ease-in-out 2.5s infinite;
+}
+
+.rule > p > strong {
+    color: #333;
+}
+
+.rule > p:first-child {
+    color: #777;
+}
+
+.rule > p:nth-child(3) {
+    font-size: 24px;
+    color: #555;
+}
+
+.rule > p:nth-child(4) {
+    font-size: 28px;
+    color: #444;
+}
+
+.rule > p:nth-child(5) {
+    font-size: 44px;
+    color: #333;
+    animation: moving2 ease-in-out 2s infinite;
+}
+
+.rule > p:nth-child(5) strong {
+    font-weight: 900;
+}
+
+@keyframes moving1 {
+    0% {
+        transform: scale(1)
+    }
+    50% {
+        transform: scale(1.5) rotate(-5deg)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+
+@keyframes moving2 {
+    0% {
+        transform: translate3d(0, -10px, 0)
+    }
+    50% {
+        transform: translate3d(0, 0, 0) skewY(-13deg)
+    }
+    100% {
+        transform: translate3d(0, -10px, 0)
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* 다크모드 */
+
+.msg.dark,
+.goal.dark > h1,
+.goal.dark > .point,
+.rule.dark > h1,
+.introduce.dark > h1{
+    color: #fefefe;
+}
+
+.goal.dark > p{
+    color: #ccc;
+}
+
+.goal.dark > p > strong:not(:nth-child(2)), .rule.dark > p > strong {
+    color: #00F300;
+}
+
+.rule.dark > p{
+    color: #ccc;
+}
+
+.rule.dark > p:nth-child(3) {
+    color: #ddd;
+}
+
+.rule.dark > p:nth-child(4) {
+    color: #f9f9f9;
+}
+
+.rule.dark > p:nth-child(5) {
+   color: #fefefe;
+}

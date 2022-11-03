@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-   return render_template('member_pjs.html')
+   return render_template('index.html')
 
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://test:sparta@cluster0.dh1dzr3.mongodb.net/Cluster0?retryWrites=true&w=majority')
