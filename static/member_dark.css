@@ -1,0 +1,45 @@
+.desc.dark,
+.about.dark > h1,
+.my_style.dark > h1,
+.nav_wrapper > h1{
+    color: #00F300;
+}
+
+.about.dark > h4,
+.my_style.dark > h4,
+.hi > span {
+    color: #fefefe;
+}
+
+.board.dark {
+    background-color: #fefefe;
+}
+
+
+
+
+
+
+/*.goal.dark > p{*/
+/*    color: #ccc;*/
+/*}*/
+
+/*.goal.dark > p > strong:not(:nth-child(2)), .rule.dark > p > strong {*/
+/*    color: #00F300;*/
+/*}*/
+
+/*.rule.dark > p{*/
+/*    color: #ccc;*/
+/*}*/
+
+/*.rule.dark > p:nth-child(3) {*/
+/*    color: #ddd;*/
+/*}*/
+
+/*.rule.dark > p:nth-child(4) {*/
+/*    color: #f9f9f9;*/
+/*}*/
+
+/*.rule.dark > p:nth-child(5) {*/
+/*   color: #fefefe;*/
+/*}*/
