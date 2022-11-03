@@ -1,7 +1,7 @@
 .desc.dark,
 .about.dark > h1,
 .my_style.dark > h1,
-.nav_wrapper > h1{
+.nav_wrapper.dark > h1{
     color: #00F300;
 }
 
