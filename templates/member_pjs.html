@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_1.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_1.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}" />
 
     <title>박진산</title>
 
-
     <script>
-        $(document).ready(function () {
-            show_order();
-        });
+      $(document).ready(function () {
+        show_order();
+      });
 
-        function show_order() {
-            $.ajax({
-                type: 'GET',
-                url: '/members/3/board',
-                data: {},
-                success: function (response) {
-                    let rows = response['guest']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let board = rows[i]['board']
-                        let date = rows[i]['date']
-                        let temp_html = `  <div class="col">
+      function show_order() {
+        $.ajax({
+          type: 'GET',
+          url: '/members/3/board',
+          data: {},
+          success: function (response) {
+            let rows = response['guest'];
+            for (let i = 0; i < rows.length; i++) {
+              let name = rows[i]['name'];
+              let board = rows[i]['board'];
+              let date = rows[i]['date'];
+              let temp_html = `  <div class="col">
                                               <div class="card h-100">
                                                   <div class="card-body">
                                                       <h5 class="card-title">${name}</h5>
@@ -43,148 +46,145 @@
                                                       <p class="mycomment">${board}</p>
                                                   </div>
                                               </div>
-                                            </div>`
-                        $('#card-box').append(temp_html);
-                    }
-                }
-            });
-        }
+                                            </div>`;
+              $('#card-box').append(temp_html);
+            }
+          },
+        });
+      }
 
-        function save_board() {
-            let name = $('#name').val()
-            let board = $('#board').val()
+      function save_board() {
+        let name = $('#name').val();
+        let board = $('#board').val();
 
-            let date = new Date()
-            let year = date.getFullYear()
-            let month = date.getMonth() + 1
-            let day = date.getDate()
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
 
-            let time = new Date();
-            let minutes = String(time.getMinutes()).padStart(2, "0");
-            let hours = String(time.getHours()).padStart(2, "0");
-            let seconds = String(time.getSeconds()).padStart(2, "0");
+        let time = new Date();
+        let minutes = String(time.getMinutes()).padStart(2, '0');
+        let hours = String(time.getHours()).padStart(2, '0');
+        let seconds = String(time.getSeconds()).padStart(2, '0');
 
-            let here = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
+        let here = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-            $.ajax({
-                type: 'POST',
-                url: '/members/3/board',
-                data: {name_give: name, board_give: board, date_give: here},
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload();
-                }
-            });
-        }
-
+        $.ajax({
+          type: 'POST',
+          url: '/members/3/board',
+          data: { name_give: name, board_give: board, date_give: here },
+          success: function (response) {
+            alert(response['msg']);
+            window.location.reload();
+          },
+        });
+      }
     </script>
-</head>
-<body>
-<!--타이틀부분-->
-<div class="boxalign">
-
-    <div class="container">
+  </head>
+  <body>
+    <!--타이틀부분-->
+    <div class="boxalign">
+      <div class="container">
         <div class="row profile_wrapper">
-            <div class="col">
-                <div class="profile">
-                    <img src="static/profile-pjs.jpg" alt="">
-                </div>
+          <div class="col">
+            <div class="profile">
+              <img src="static/profile-pjs.jpg" alt="" />
             </div>
-            <div class="col">
-                <h1 class="desc">No Error<br/>No Gain</h1>
-            </div>
+          </div>
+          <div class="col">
+            <h1 class="desc">No Error<br />No Gain</h1>
+          </div>
         </div>
 
         <!--소개부분-->
         <div class="about">
-            <h1 style="font-weight: bold">About Me </h1>
-            <h4>
-                안녕하세요! 제 이름은 박진산입니다.<br>
-                저는 빡빡이고 대학에서 예술을 공부했고 마케터로 일한 이력이 있어요.<br>
-                지금은 프론트엔드 개발자가 되기 위해 고군분투 중입니다!<br>
-                그리고 ENFP와 ENTP를 오가는 성격을 가지고 있어요.<br><br>
-                새로움을 추구하는 성향이라 뭔가를 배우는 걸 좋아해요.<br>
-                이미 알고 있는 건 더 잘하려고 더 빠르게 하려고 노력합니다!<br>
-                지인을 오랜만에 만나면, 뭔가 달라졌다는 소리를 종종 듣습니다 :)<br>
-            </h4>
+          <h1 style="font-weight: bold">About Me</h1>
+          <h4>
+            안녕하세요! 제 이름은 박진산입니다.<br />
+            저는 빡빡이고 대학에서 예술을 공부했고 마케터로 일한 이력이 있어요.<br />
+            지금은 프론트엔드 개발자가 되기 위해 고군분투 중입니다!<br />
+            그리고 ENFP와 ENTP를 오가는 성격을 가지고 있어요.<br /><br />
+            새로움을 추구하는 성향이라 뭔가를 배우는 걸 좋아해요.<br />
+            이미 알고 있는 건 더 잘하려고 더 빠르게 하려고 노력합니다!<br />
+            지인을 오랜만에 만나면, 뭔가 달라졌다는 소리를 종종 듣습니다 :)<br />
+          </h4>
         </div>
 
-
         <div class="my_style">
-            <h1 style="font-weight: bold">My Style </h1>
-            <h4>
-                추가로 입력할게요!
-            </h4>
+          <h1 style="font-weight: bold">My Style</h1>
+          <h4>추가로 입력할게요!</h4>
         </div>
 
         <div class="icon">
-            <a target="_blank" class="ic_github" href="https://github.com/wallofwolf"></a>
-            <a target="_blank" class="ic_blog" href="https://velog.io/@mkdavdi123"></a>
+          <a target="_blank" class="ic_github" href="https://github.com/wallofwolf"></a>
+          <a target="_blank" class="ic_blog" href="https://velog.io/@mkdavdi123"></a>
         </div>
 
         <!--방명록 부분-->
         <div>
-            <h2 class="hi"><br>️<span>인사를 남겨주시면, 우린 친구가 될지도?</span></h2>
-            <div class="board">
-                <div class="mypost">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="name" placeholder="name@example.com">
-                        <label for="name">당신의 이름은?</label>
-                    </div>
-                    <div class="mb-3">
-              <textarea class="form-control" id="board" rows="3"
-                        placeholder="Say Hello!"></textarea>
-                    </div>
-                    <div class="mybtn">
-                        <button onclick="save_board()" type="button" class="btn btn-dark">인사 남기기</button>
-                    </div>
-                </div>
+          <h2 class="hi"><br />️<span>인사를 남겨주시면, 우린 친구가 될지도?</span></h2>
+          <div class="board">
+            <div class="mypost">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="name" placeholder="name@example.com" />
+                <label for="name">당신의 이름은?</label>
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" id="board" rows="3" placeholder="Say Hello!"></textarea>
+              </div>
+              <div class="mybtn">
+                <button onclick="save_board()" type="button" class="btn btn-dark">인사 남기기</button>
+              </div>
             </div>
+          </div>
 
-            <div class="board-comment">
-                <div id="card-box" class="row row-cols-1 row-cols-md-2 g-4">
-                </div>
-            </div>
-
-
-                     <div class="nav_wrapper">
-            <h1>We're FRONTIER</h1>
-                <nav class="nav">
-                <ul class="team_list">
-                    <li class="team_list_item">
-                        <a href="/members/1">
-                             <p class="name">김성민</p>
-                            <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-11-ae4a7d70-c7cf-4377-ba11-5c8d33fcfaaa.jpg" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/2">
-                            <p class="name">김혜진</p>
-                            <img src="../static/1.png" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/3">
-                            <p class="name">박진산</p>
-                            <img src="../static/profile-pjs.jpg" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/4">
-                            <p class="name">이유정</p>
-                            <img src="../static/profile_lyj.jpg" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/5">
-                            <p class="name">조성아</p>
-                            <img src="../static/profile_jsa.jpg" alt="">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+          <div class="board-comment">
+            <div id="card-box" class="row row-cols-1 row-cols-md-2 g-4"></div>
+          </div>
         </div>
-            {% include 'fixedIcons.html' %}
+
+        <div class="nav_wrapper">
+          <h1>We're FRONTIER</h1>
+          <nav class="nav">
+            <ul class="team_list">
+              <li class="team_list_item">
+                <a href="/members/1">
+                  <p class="name">김성민</p>
+                  <img
+                    src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-11-ae4a7d70-c7cf-4377-ba11-5c8d33fcfaaa.jpg"
+                    alt=""
+                  />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/2">
+                  <p class="name">김혜진</p>
+                  <img src="../static/1.png" alt="" />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/3">
+                  <p class="name">박진산</p>
+                  <img src="../static/profile-pjs.jpg" alt="" />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/4">
+                  <p class="name">이유정</p>
+                  <img src="../static/profile_lyj.jpg" alt="" />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/5">
+                  <p class="name">조성아</p>
+                  <img src="../static/profile_jsa.jpg" alt="" />
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-</body>
+        {% include 'fixedIcons.html' %}
+      </div>
+    </div>
+  </body>
 </html>
