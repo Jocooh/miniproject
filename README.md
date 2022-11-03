@@ -44,6 +44,19 @@
 ## 끝으로 예쁘게 봐주세요 😍
 
 
+|TEAM|Position|GitHub|TEAM|Position|GitHub|
+|--------|------|------|--------|------|------| 
+|이유정|FrontEnd|@yujleee|조성아|FrontEnd|@Jocooh|
+|박진산|FrontEnd|@wallofwolf|김혜진|FrontEnd|@jini9256|
+|김성민|FrontEnd|@Clariatinet|
+
+
+
+
+
+
+
+
 <p align="center"><img src="https://user-images.githubusercontent.com/111356420/199711133-d72a1222-faab-492c-9bc9-f88154f78138.png" width=300></p>
 
 
