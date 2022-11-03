@@ -30,7 +30,7 @@
         function show_order() {
             $.ajax({
                 type: 'GET',
-                url: '/member_list',
+                url: '/members/5/board',
                 data: {},
                 success: function (response) {
                     let rows = response['guest']
@@ -71,7 +71,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: '/member_list',
+                url: '/members/5/board',
                 data: {name_give: name, board_give: board, date_give:here},
                 success: function (response) {
                     alert(response['msg'])
@@ -153,47 +153,44 @@
             </div>
         </div>
 
-     <div class="nav_wrapper">
-    <h3 class="nav_title">We're FRONTIER</h3>
-    <nav class="nav">
-        <ul class="team_list">
-            <li class="team_list_item">
-                <a href="#">
-                    <p class="name">김성민</p>
-                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-11-ae4a7d70-c7cf-4377-ba11-5c8d33fcfaaa.jpg"
-                         alt="">
-                </a>
-            </li>
-            <li class="team_list_item">
-                <a href="#">
-                    <p class="name">김혜진</p>
-                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-15-e4cae587-e3eb-46c9-80dc-e2c73ad456e4.jpg"
-                         alt="">
-                </a>
-            </li>
-            <li class="team_list_item">
-                <a href="#">
-                    <p class="name">박진산</p>
-                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-19-e393e505-2fa0-4283-bc00-9880aaa245e9.jpg"
-                         alt="">
-                </a>
-            </li>
-            <li class="team_list_item">
-                <a href="/members/4">
-                    <p class="name">이유정</p>
-                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-04-2ad2aaed-c95f-47f8-8582-0a90f4e940e7.jpg"
-                         alt="">
-                </a>
-            </li>
-            <li class="team_list_item">
-                <a href="#">
-                    <p class="name">조성아</p>
-                   <img src="/static/JSA.png"
-                         alt="">
-                </a>
-            </li>
-        </ul>
-    </nav>
+         <div class="nav_wrapper">
+            <h1>We're FRONTIER</h1>
+                <nav class="nav">
+                <ul class="team_list">
+                    <li class="team_list_item">
+                        <a href="/members/1">
+                             <p class="name">김성민</p>
+                            <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-11-ae4a7d70-c7cf-4377-ba11-5c8d33fcfaaa.jpg" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/2">
+                            <p class="name">김혜진</p>
+                            <img src="../static/1.png" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/3">
+                            <p class="name">박진산</p>
+                            <img src="../static/profile-pjs.jpg" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/4">
+                            <p class="name">이유정</p>
+                            <img src="../static/profile_lyj.jpg" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/5">
+                            <p class="name">조성아</p>
+                            <img src="../static/profile_jsa.jpg" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+         {% include 'fixedIcons.html' %}
 </div>
 </body>
 </html>
