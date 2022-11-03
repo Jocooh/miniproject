@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -12,12 +15,21 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_1.css')}}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style_1.css')}}"
+    />
     <link rel="stylesheet" href="{{ url_for('static', filename='nav.css')}}" />
-      <link rel="stylesheet" href="{{ url_for('static', filename='member_dark.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='member_dark.css') }}"
+    />
 
     <title>프론티어 | 이유정</title>
 
@@ -102,11 +114,14 @@
         <div class="about">
           <h1 style="font-weight: bold">About Me 🔉</h1>
           <h4>
-            용감한 수호자 <span style="color: red">#ISFJ</span> 👩‍⚕ 이유정입니다! ️<br />
-            이것저것 배우고 탐구해보는 것을 좋아하고, 문화생활에도 관심이 많습니다.<br />
+            용감한 수호자 <span style="color: red">#ISFJ</span> 👩‍⚕
+            이유정입니다! ️<br />
+            이것저것 배우고 탐구해보는 것을 좋아하고, 문화생활에도 관심이
+            많습니다.<br />
             동물과 귀여운 것들을 좋아합니다. 💖
             <br />
-            웹디자이너로 일했던 경험을 바탕으로 디자인 감각을 어느정도 갖추고 있고, <br />
+            웹디자이너로 일했던 경험을 바탕으로 디자인 감각을 어느정도 갖추고
+            있고, <br />
             깊진 않지만 백엔드 지식을 보유하고 있다는 것 또한 장점! 💪
           </h4>
         </div>
@@ -116,38 +131,70 @@
           <h4>
             <li>
               팀원들의 좋은 의견을 적극적으로
-              <span style="background-color: red; color: antiquewhite">수용</span>합니다.
+              <span style="background-color: red; color: antiquewhite"
+                >수용</span
+              >합니다.
             </li>
             <li>
-              계획에 맞춰 <span style="background-color: red; color: antiquewhite">책임감</span>을 가지고 프로젝트에
-              임합니다.
+              계획에 맞춰
+              <span style="background-color: red; color: antiquewhite"
+                >책임감</span
+              >을 가지고 프로젝트에 임합니다.
             </li>
             <li>
               자신있는 부분에 대해서 어필하여 프로젝트 완성도를 높이는 데에
-              <span style="background-color: red; color: antiquewhite">기여</span>합니다.
+              <span style="background-color: red; color: antiquewhite"
+                >기여</span
+              >합니다.
             </li>
           </h4>
         </div>
 
         <div class="icon">
-          <a target="_blank" class="ic_github" href="https://github.com/yujleee"></a>
-          <a target="_blank" class="ic_blog" href="https://i-ten.tistory.com"></a>
+          <a
+            target="_blank"
+            class="ic_github"
+            href="https://github.com/yujleee"
+          ></a>
+          <a
+            target="_blank"
+            class="ic_blog"
+            href="https://i-ten.tistory.com"
+          ></a>
         </div>
 
         <!--방명록 부분-->
         <div>
-          <h2 class="hi"><br />️<span>인사를 남겨주시면, 우린 친구가 될지도?</span></h2>
+          <h2 class="hi">
+            <br />️<span>인사를 남겨주시면, 우린 친구가 될지도?</span>
+          </h2>
           <div class="board">
             <div class="mypost">
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="name" placeholder="name@example.com" />
+                <input
+                  type="email"
+                  class="form-control"
+                  id="name"
+                  placeholder="name@example.com"
+                />
                 <label for="name">당신의 이름은?</label>
               </div>
               <div class="mb-3">
-                <textarea class="form-control" id="board" rows="3" placeholder="Say Hello!"></textarea>
+                <textarea
+                  class="form-control"
+                  id="board"
+                  rows="3"
+                  placeholder="Say Hello!"
+                ></textarea>
               </div>
               <div class="mybtn">
-                <button onclick="save_board()" type="button" class="btn btn-dark">인사 남기기</button>
+                <button
+                  onclick="save_board()"
+                  type="button"
+                  class="btn btn-dark"
+                >
+                  인사 남기기
+                </button>
               </div>
             </div>
           </div>
@@ -164,7 +211,7 @@
               <li class="team_list_item">
                 <a href="/members/1">
                   <p class="name">김성민</p>
-                <img src="../static/cat_ksm.jpeg" alt="">
+                  <img src="../static/profile_ksm.jpeg" alt="" />
                 </a>
               </li>
               <li class="team_list_item">
