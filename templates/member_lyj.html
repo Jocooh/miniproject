@@ -1,44 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel='stylesheet' href="{{ url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_1.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_1.css')}}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css')}}" />
 
     <title>프론티어 | 이유정</title>
 
-
-
-
-
     <script>
-        $(document).ready(function () {
-            show_order();
-        });
+      $(document).ready(function () {
+        show_order();
+      });
 
-        function show_order() {
-            $.ajax({
-                type: 'GET',
-                url: '/members/4/board',
-                data: {},
-                success: function (response) {
-                    let rows = response['guest']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let board = rows[i]['board']
-                        let date = rows[i]['date']
-                        let temp_html = `  <div class="col">
+      function show_order() {
+        $.ajax({
+          type: 'GET',
+          url: '/members/4/board',
+          data: {},
+          success: function (response) {
+            let rows = response['guest'];
+            for (let i = 0; i < rows.length; i++) {
+              let name = rows[i]['name'];
+              let board = rows[i]['board'];
+              let date = rows[i]['date'];
+              let temp_html = `  <div class="col">
                                               <div class="card h-100">
                                                   <div class="card-body">
                                                       <h5 class="card-title">${name}</h5>
@@ -46,148 +46,160 @@
                                                       <p class="mycomment">${board}</p>
                                                   </div>
                                               </div>
-                                            </div>`
-                        $('#card-box').append(temp_html);
-                    }
-                }
-            });
-        }
+                                            </div>`;
+              $('#card-box').append(temp_html);
+            }
+          },
+        });
+      }
 
-        function save_board() {
-            let name = $('#name').val()
-            let board = $('#board').val()
+      function save_board() {
+        let name = $('#name').val();
+        let board = $('#board').val();
 
-            let date = new Date()
-            let year = date.getFullYear()
-            let month = date.getMonth() + 1
-            let day = date.getDate()
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
 
-            let time = new Date();
-            let minutes = String(time.getMinutes()).padStart(2,"0");
-            let hours = String(time.getHours()).padStart(2,"0");
-            let seconds= String(time. getSeconds()).padStart(2,"0");
+        let time = new Date();
+        let minutes = String(time.getMinutes()).padStart(2, '0');
+        let hours = String(time.getHours()).padStart(2, '0');
+        let seconds = String(time.getSeconds()).padStart(2, '0');
 
-            let here = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
+        let here = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-            $.ajax({
-                type: 'POST',
-                url: '/members/4/board',
-                data: {name_give: name, board_give: board, date_give:here},
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload();
-                }
-            });
-        }
-
+        $.ajax({
+          type: 'POST',
+          url: '/members/4/board',
+          data: { name_give: name, board_give: board, date_give: here },
+          success: function (response) {
+            alert(response['msg']);
+            window.location.reload();
+          },
+        });
+      }
     </script>
-</head>
-<body>
-<!--타이틀부분-->
-<div class="boxalign">
-
-   <div class="container">
-      <div class="row profile_wrapper">
+  </head>
+  <body>
+    <!--타이틀부분-->
+    <div class="boxalign">
+      <div class="container">
+        <div class="row profile_wrapper">
           <div class="col">
-              <div class="profile">
-                  <img src="../static/profile_lyj.jpg" alt="">
-              </div>
-          </div>
-          <div class="col">
-              <h1 class="desc">일단 해보자! <br/> 후회하지 말고</h1>
-          </div>
-      </div>
-
-<!--소개부분-->
-   <div class="about">
-      <h1 style="font-weight: bold">About Me 🔉</h1>
-      <h4>
-          용감한 수호자 <span style="color: red">#ISFJ</span> 👩‍⚕️<br>
-          이것저것 배우고 탐구해보는 것을 좋아하고, 문화생활에도 관심이 많습니다.<br>
-          동물과 귀여운 것들을 좋아합니다. 💖
-          <br>
-          웹디자이너로 일했던 경험을 바탕으로 디자인 감각을 어느정도 갖추고 있고, <br/>
-          깊진 않지만 백엔드 지식을 보유하고 있다는 것 또한 장점! 💪
-      </h4>
-  </div>
-
-
-  <div class="my_style">
-      <h1 style="font-weight: bold">My Style 💭</h1>
-      <h4>
-          <li>팀원들의 좋은 의견을 적극적으로 <span style="background-color:red;color: antiquewhite">수용</span>합니다.</li>
-          <li>계획에 맞춰 <span style="background-color:red;color: antiquewhite">책임감</span>을 가지고 프로젝트에 임합니다.</li>
-          <li>자신있는 부분에 대해서 어필하여 프로젝트 완성도를 높이는 데에 <span style="background-color:red;color: antiquewhite">기여</span>합니다.</li>
-      </h4>
-  </div>
-
-  <div class="icon">
-      <a target="_blank" class="ic_github" href="https://github.com/yujleee" ></a>
-      <a target="_blank" class="ic_blog" href="https://i-ten.tistory.com" ></a>
-  </div>
-
-<!--방명록 부분-->
-       <div>
-           <h2 class="hi"><br>️<span>인사를 남겨주시면, 우린 친구가 될지도?</span></h2>
-           <div class="board">
-               <div class="mypost">
-                   <div class="form-floating mb-3">
-                       <input type="email" class="form-control" id="name" placeholder="name@example.com">
-                       <label for="name">당신의 이름은?</label>
-                   </div>
-                   <div class="mb-3">
-              <textarea class="form-control" id="board" rows="3"
-                        placeholder="Say Hello!"></textarea>
-                   </div>
-                   <div class="mybtn">
-                       <button onclick="save_board()" type="button" class="btn btn-dark">인사 남기기</button>
-                   </div>
-               </div>
-         </div>
-
-        <div class="board-comment">
-            <div id="card-box" class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="profile">
+              <img src="../static/profile_lyj.jpg" alt="" />
             </div>
+          </div>
+          <div class="col">
+            <h1 class="desc">
+              일단 해보자! <br />
+              후회하지 말고
+            </h1>
+          </div>
         </div>
 
-         <div class="nav_wrapper">
-            <h1>We're FRONTIER</h1>
-                <nav class="nav">
-                <ul class="team_list">
-                    <li class="team_list_item">
-                        <a href="/members/1">
-                             <p class="name">김성민</p>
-                            <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-11-ae4a7d70-c7cf-4377-ba11-5c8d33fcfaaa.jpg" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/2">
-                            <p class="name">김혜진</p>
-                            <img src="../static/1.png" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/3">
-                            <p class="name">박진산</p>
-                            <img src="../static/profile-pjs.jpg" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/4">
-                            <p class="name">이유정</p>
-                            <img src="../static/profile_lyj.jpg" alt="">
-                        </a>
-                    </li>
-                    <li class="team_list_item">
-                        <a href="/members/5">
-                            <p class="name">조성아</p>
-                            <img src="../static/profile_jsa.jpg" alt="">
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <!--소개부분-->
+        <div class="about">
+          <h1 style="font-weight: bold">About Me 🔉</h1>
+          <h4>
+            용감한 수호자 <span style="color: red">#ISFJ</span> 👩‍⚕ 이유정입니다! ️<br />
+            이것저것 배우고 탐구해보는 것을 좋아하고, 문화생활에도 관심이 많습니다.<br />
+            동물과 귀여운 것들을 좋아합니다. 💖
+            <br />
+            웹디자이너로 일했던 경험을 바탕으로 디자인 감각을 어느정도 갖추고 있고, <br />
+            깊진 않지만 백엔드 지식을 보유하고 있다는 것 또한 장점! 💪
+          </h4>
         </div>
-         {% include 'fixedIcons.html' %}
-</div>
-</body>
+
+        <div class="my_style">
+          <h1 style="font-weight: bold">My Style 💭</h1>
+          <h4>
+            <li>
+              팀원들의 좋은 의견을 적극적으로
+              <span style="background-color: red; color: antiquewhite">수용</span>합니다.
+            </li>
+            <li>
+              계획에 맞춰 <span style="background-color: red; color: antiquewhite">책임감</span>을 가지고 프로젝트에
+              임합니다.
+            </li>
+            <li>
+              자신있는 부분에 대해서 어필하여 프로젝트 완성도를 높이는 데에
+              <span style="background-color: red; color: antiquewhite">기여</span>합니다.
+            </li>
+          </h4>
+        </div>
+
+        <div class="icon">
+          <a target="_blank" class="ic_github" href="https://github.com/yujleee"></a>
+          <a target="_blank" class="ic_blog" href="https://i-ten.tistory.com"></a>
+        </div>
+
+        <!--방명록 부분-->
+        <div>
+          <h2 class="hi"><br />️<span>인사를 남겨주시면, 우린 친구가 될지도?</span></h2>
+          <div class="board">
+            <div class="mypost">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="name" placeholder="name@example.com" />
+                <label for="name">당신의 이름은?</label>
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" id="board" rows="3" placeholder="Say Hello!"></textarea>
+              </div>
+              <div class="mybtn">
+                <button onclick="save_board()" type="button" class="btn btn-dark">인사 남기기</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="board-comment">
+            <div id="card-box" class="row row-cols-1 row-cols-md-2 g-4"></div>
+          </div>
+        </div>
+
+        <div class="nav_wrapper">
+          <h1>We're FRONTIER</h1>
+          <nav class="nav">
+            <ul class="team_list">
+              <li class="team_list_item">
+                <a href="/members/1">
+                  <p class="name">김성민</p>
+                  <img
+                    src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-11-ae4a7d70-c7cf-4377-ba11-5c8d33fcfaaa.jpg"
+                    alt=""
+                  />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/2">
+                  <p class="name">김혜진</p>
+                  <img src="../static/1.png" alt="" />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/3">
+                  <p class="name">박진산</p>
+                  <img src="../static/profile-pjs.jpg" alt="" />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/4">
+                  <p class="name">이유정</p>
+                  <img src="../static/profile_lyj.jpg" alt="" />
+                </a>
+              </li>
+              <li class="team_list_item">
+                <a href="/members/5">
+                  <p class="name">조성아</p>
+                  <img src="../static/profile_jsa.jpg" alt="" />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        {% include 'fixedIcons.html' %}
+      </div>
+    </div>
+  </body>
 </html>
