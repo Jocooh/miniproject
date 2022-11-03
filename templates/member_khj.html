@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel='stylesheet' href="{{ url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_2.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_1.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css')}}">
+
+    <title>개인페이지</title>
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+            show_order();
+        });
+
+        function show_order() {
+            $.ajax({
+                type: 'GET',
+                url: '/member_list',
+                data: {},
+                success: function (response) {
+                    let rows = response['guest']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let board = rows[i]['board']
+                        let date = rows[i]['date']
+                        let temp_html = `  <div class="col">
+                                              <div class="card h-100">
+                                                  <div class="card-body">
+                                                      <h5 class="card-title">${name}</h5>
+                                                      <p class="card-text" style="text-align: end">${date}</p>
+                                                      <p class="mycomment">${board}</p>
+                                                  </div>
+                                              </div>
+                                            </div>`
+                        $('#card-box').append(temp_html);
+                    }
+                }
+            });
+        }
+
+        function save_board() {
+            let name = $('#name').val()
+            let board = $('#board').val()
+
+            let date = new Date()
+            let year = date.getFullYear()
+            let month = date.getMonth() + 1
+            let day = date.getDate()
+
+            let time = new Date();
+            let minutes = String(time.getMinutes()).padStart(2,"0");
+            let hours = String(time.getHours()).padStart(2,"0");
+            let seconds= String(time. getSeconds()).padStart(2,"0");
+
+            let here = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
+
+            $.ajax({
+                type: 'POST',
+                url: '/member_list',
+                data: {name_give: name, board_give: board, date_give:here},
+                success: function (response) {
+                    alert(response['msg'])
+                    window.location.reload();
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<!--타이틀부분-->
+<div class="boxalign">
+
+   <div class="container">
+      <div class="row profile_wrapper">
+          <div class="col">
+              <div class="profile">
+                  <img src="/static/1.png" alt="">
+              </div>
+          </div>
+          <div class="col">
+              <h1 class="desc">노력은 절대로 <br/> 배신하지 않는다</h1>
+          </div>
+      </div>
+
+<!--소개부분-->
+   <div class="about">
+      <h1 style="font-weight: bold">About Me 🔉</h1>
+      <h4>
+          모험가, 호기심 많은 예술가 유형이라는 <span style="color: red">#ISFP</span> 👩‍🎨<br>
+          언제나 새로운 도전을 하는 것을 좋아하고,<br>
+          다양한 분야에 관심을 보이며 배우는 것을 좋아합니다.
+          <br>
+          캠프 기간동안 <span style="color: red">절대</span> 포기하지말고 같이 힘내봐요 🥰
+      </h4>
+  </div>
+
+
+  <div class="my_style">
+      <h1 style="font-weight: bold">My Style 💭</h1>
+      <h4>
+          효과적인 커뮤니케이션을 통해 팀과 <span style="background-color:red;color: antiquewhite">협력</span>하여 프로젝트를 원활하게 진행시키려 노력한다. 📊</li><br>
+          <br>
+          팀의 규칙을 수립하고 지키며 프로젝트의 진행 상태를 수월하게 하며, <span style="background-color:red;color: antiquewhite">책임감</span>을 가지고 프로젝트를 성공적으로 마무리한다.</li>
+      </h4>
+  </div>
+
+  <div class="icon">
+      <a target="_blank" class="ic_github" href="https://github.com/jini9256" ></a>
+      <a target="_blank" class="ic_blog" href="https://velog.io/@jini9256" ></a>
+  </div>
+
+<!--방명록 부분-->
+       <div>
+           <h2 class="hi"><br>️<span>인사를 남겨주시면, 우린 친구가 될지도?</span></h2>
+           <div class="board">
+               <div class="mypost">
+                   <div class="form-floating mb-3">
+                       <input type="email" class="form-control" id="name" placeholder="name@example.com">
+                       <label for="name">당신의 이름은?</label>
+                   </div>
+                   <div class="mb-3">
+              <textarea class="form-control" id="board" rows="3"
+                        placeholder="Say Hello!"></textarea>
+                   </div>
+                   <div class="mybtn">
+                       <button onclick="save_board()" type="button" class="btn btn-dark">인사 남기기</button>
+                   </div>
+               </div>
+         </div>
+
+        <div class="board-comment">
+            <div id="card-box" class="row row-cols-1 row-cols-md-2 g-4">
+            </div>
+        </div>
+
+     <div class="nav_wrapper">
+    <h3 class="nav_title">We're FRONTIER</h3>
+    <nav class="nav">
+        <ul class="team_list">
+            <li class="team_list_item">
+                <a href="#">
+                    <p class="name">김성민</p>
+                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-11-ae4a7d70-c7cf-4377-ba11-5c8d33fcfaaa.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li class="team_list_item">
+                <a href="#">
+                    <p class="name">김혜진</p>
+                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-15-e4cae587-e3eb-46c9-80dc-e2c73ad456e4.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li class="team_list_item">
+                <a href="#">
+                    <p class="name">박진산</p>
+                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-19-e393e505-2fa0-4283-bc00-9880aaa245e9.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li class="team_list_item">
+                <a href="/members/4">
+                    <p class="name">이유정</p>
+                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-04-2ad2aaed-c95f-47f8-8582-0a90f4e940e7.jpg"
+                         alt="">
+                </a>
+            </li>
+            <li class="team_list_item">
+                <a href="#">
+                    <p class="name">조성아</p>
+                    <img src="https://cdn.eyesmag.com/content/uploads/sliderImages/2022/01/07/linefriends-minini-collection-08-0b7f2673-ffc6-4b12-9109-c6f2cb4e901b.jpg"
+                         alt="">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
