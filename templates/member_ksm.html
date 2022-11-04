@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_ksm.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='member_dark.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_ksm.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='member_dark.css') }}"/>
     <link rel="stylesheet" href="../static/style_ksm.css">
 
     <title>개인페이지</title>
@@ -58,16 +58,16 @@
             let day = date.getDate()
 
             let time = new Date();
-            let minutes = String(time.getMinutes()).padStart(2,"0");
-            let hours = String(time.getHours()).padStart(2,"0");
-            let seconds= String(time. getSeconds()).padStart(2,"0");
+            let minutes = String(time.getMinutes()).padStart(2, "0");
+            let hours = String(time.getHours()).padStart(2, "0");
+            let seconds = String(time.getSeconds()).padStart(2, "0");
 
             let here = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 
             $.ajax({
                 type: 'POST',
                 url: '/members/1/board',
-                data: {name_give: name, board_give: board, date_give:here},
+                data: {name_give: name, board_give: board, date_give: here},
                 success: function (response) {
                     alert(response['msg'])
                     window.location.reload();
@@ -80,47 +80,50 @@
 <body>
 <!--타이틀부분-->
 <div class="boxalign">
-  <div class="container">
-      <div class="row profile_wrapper">
-          <div class="col">
-              <div class="profile">
-                  <img src="../static/profile_ksm.jpeg" alt="">
-              </div>
-          </div>
-          <div class="col">
-              <h1 class="desc">When you have faults, do not fear to abandon them.</h1>
-          </div>
-      </div>
-</div>
-<!--소개부분-->
-<div class="form">
-  <div class="about">
-      <h1 style="font-weight: bold">About Me</h1>
-      <h4>
-        코린이 단계에서 이번엔 꿋꿋하게 나아가기 위해 <br> <span>스파르타 4기</span>에 지원 하게 되었습니다! <br>
-        실력이 자꾸 제자리걸음 인 것 같아서 걱정이지만 <br> 여러분과 함께 좋은 곳에 취업 했으면 마음이 큽니다…. <br> <br>
+    <div class="container">
+        <div class="row profile_wrapper">
+            <div class="col">
+                <div class="profile">
+                    <img src="../static/profile_ksm.jpeg" alt="">
+                </div>
+            </div>
+            <div class="col">
+                <h1 class="desc">When you have faults, do not fear to abandon them.</h1>
+            </div>
+        </div>
+        <!--소개부분-->
+        <div class="form">
+            <div class="about">
+                <h1 style="font-weight: bold">About Me</h1>
+                <h4>
+                    코린이 단계에서 이번엔 꿋꿋하게 나아가기 위해 <br> <span>스파르타 4기</span>에 지원 하게 되었습니다! <br>
+                    실력이 자꾸 제자리걸음 인 것 같아서 걱정이지만 <br> 여러분과 함께 좋은 곳에 취업 했으면 마음이 큽니다…. <br> <br>
 
-        TMI라고 할 건 크게 없지만, <span>고양이</span>를 정말 좋아합니다. <br>
-        어렸을 적엔 강아지가 좋았는데 시간이 지나면서 <br> 고양이가 점점  좋더라구요.
-        사정상 키우고 있지는 못하고 <br> 동네 고양이들과 친밀감만 열심히 쌓아가고 있습니다. <br> 한 생명을 책임질 수 있는 때가 온다면 꼭 키우고싶어요. <br><br>
+                    TMI라고 할 건 크게 없지만, <span>고양이</span>를 정말 좋아합니다. <br>
+                    어렸을 적엔 강아지가 좋았는데 시간이 지나면서 <br> 고양이가 점점 좋더라구요.
+                    사정상 키우고 있지는 못하고 <br> 동네 고양이들과 친밀감만 열심히 쌓아가고 있습니다. <br> 한 생명을 책임질 수 있는 때가 온다면 꼭 키우고싶어요. <br><br>
 
-        아직도 MBTI가 그렇게 유행이라면서요? 저는 <span>INFP</span>입니다. <br> 그렇게 좋은 평가를 받지 못하는 성격유형이라 아니라고 <br> 부정도 해봤지만 저는 역시 INFP가 맞았어요. <br><br> 여러분의 MBTI도 궁금합니다. 어떤 유형이신가요?
+                    아직도 MBTI가 그렇게 유행이라면서요? 저는 <span>INFP</span>입니다. <br> 그렇게 좋은 평가를 받지 못하는 성격유형이라 아니라고 <br> 부정도 해봤지만 저는
+                    역시 INFP가 맞았어요. <br><br> 여러분의 MBTI도 궁금합니다. 어떤 유형이신가요?
 
-  </h4>
-  </div>
-  <div class="my_style">
-      <h1 style="font-weight: bold">My Style</h1>
-      <h4>
-        성격적인 부분에서 장점이랄 게 뚜렷하진 않지만 <br> <span>성격이 모난 곳이 없어서</span> 크게 모질거나 하지 않는 것 같아요. <br> 긍정적이라고 표현하는 게 좋겠죠. 
-        그래서 의견의 차이를 <br> 좁혀야 한다거나, 다같이 함께 해야하는 이런 상황에는 <br> 아주 자신이 있습니다. <br><br>
-      </h4>
-  </div>
-  <div class="icon">
-      <a target="_blank" class="ic_github" href="https://github.com/Clariatinet" ><img src="../static/3.png" alt="깃허브"></a>
-      <a target="_blank" class="ic_blog" href="https://velog.io/@zzzqw97" ><img src="../static/2.png" alt="벨로그"></a>
-  </div>
-</div>
-  <!--방명록 부분-->
+                </h4>
+            </div>
+            <div class="my_style">
+                <h1 style="font-weight: bold">My Style</h1>
+                <h4>
+                    성격적인 부분에서 장점이랄 게 뚜렷하진 않지만 <br> <span>성격이 모난 곳이 없어서</span> 크게 모질거나 하지 않는 것 같아요. <br> 긍정적이라고 표현하는 게
+                    좋겠죠.
+                    그래서 의견의 차이를 <br> 좁혀야 한다거나, 다같이 함께 해야하는 이런 상황에는 <br> 아주 자신이 있습니다. <br><br>
+                </h4>
+            </div>
+            <div class="icon">
+                <a target="_blank" class="ic_github" href="https://github.com/Clariatinet"><img src="../static/3.png"
+                                                                                                alt="깃허브"></a>
+                <a target="_blank" class="ic_blog" href="https://velog.io/@zzzqw97"><img src="../static/2.png"
+                                                                                         alt="벨로그"></a>
+            </div>
+        </div>
+        <!--방명록 부분-->
         <div>
             <h2 class="hi"><br>️<span>인사를 남겨주시면, 우린 친구가 될지도?</span></h2>
             <div class="board">
@@ -137,52 +140,54 @@
                         <button onclick="save_board()" type="button" class="btn btn-dark">인사 남기기</button>
                     </div>
                 </div>
-          </div>
-          <div class="board-comment">
-              <div id="card-box" class="row row-cols-1 row-cols-md-2 g-4">
-              </div>
-          </div>
-</div>
+            </div>
+            <div class="board-comment">
+                <div id="card-box" class="row row-cols-1 row-cols-md-2 g-4">
+                </div>
+            </div>
+        </div>
 
-                  <div class="nav_wrapper">
+        <div class="nav_wrapper">
             <h1>We're FRONTIER</h1>
-                    <nav class="nav">
-                    <ul class="team_list">
-                        <li class="team_list_item">
-                            <a href="/members/1">
-                                <p class="name">김성민</p>
-                                <img src="../static/profile_ksm.jpeg" alt="">
-                            </a>
-                        </li>
-                        <li class="team_list_item">
-                            <a href="/members/2">
-                                <p class="name">김혜진</p>
-                                <img src="../static/1.png" alt="">
-                            </a>
-                        </li>
-                        <li class="team_list_item">
-                            <a href="/members/3">
-                                <p class="name">박진산</p>
-                                <img src="../static/profile-pjs.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="team_list_item">
-                            <a href="/members/4">
-                                <p class="name">이유정</p>
-                                <img src="../static/profile_lyj.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="team_list_item">
-                            <a href="/members/5">
-                                <p class="name">조성아</p>
-                                <img src="../static/profile_jsa.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+            <nav class="nav">
+                <ul class="team_list">
+                    <li class="team_list_item">
+                        <a href="/members/1">
+                            <p class="name">김성민</p>
+                            <img src="../static/profile_ksm.jpeg" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/2">
+                            <p class="name">김혜진</p>
+                            <img src="../static/1.png" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/3">
+                            <p class="name">박진산</p>
+                            <img src="../static/profile-pjs.jpg" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/4">
+                            <p class="name">이유정</p>
+                            <img src="../static/profile_lyj.jpg" alt="">
+                        </a>
+                    </li>
+                    <li class="team_list_item">
+                        <a href="/members/5">
+                            <p class="name">조성아</p>
+                            <img src="../static/profile_jsa.jpg" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
         {% include 'fixedIcons.html' %}
+    </div>
 
-        <script src="/static/icons.js"></script>
+</div>
+<script src="/static/icons.js"></script>
 </body>
 </html>
